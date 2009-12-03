@@ -31,14 +31,12 @@ dojo.addOnLoad(function() {
 	
 	console.info('Trying to initialize Comet...');
 	var cometUrl = location.protocol + '//' + location.host + config.contextPath + '/cometd';
-	cometd.init(cometUrl);
-	cometd.subscribe('/meta/connect', _metaConnect);
+	cometd.configure({'url': cometUrl, 'logLevel': 'debug'});
+	
+	cometd.addListener('/meta/connect', _metaConnect); // subscribe to meta channel to listen for meta events
+	cometd.handshake();
 	cometd.subscribe('/messages', function(message) {
 		console.info("Got: ", message);
 	});
-	console.info('Should be subscribed now?');
-// new cometd.js API	
-//	cometd.configure({'url': cometUrl, 'logLevel': 'debug'});
-//	cometd.addListener('/meta/connect', _metaConnect); // subscribe to meta channel to listen for meta events
-//	cometd.handshake();
+	console.info('Subscription requests sent.');
 });
