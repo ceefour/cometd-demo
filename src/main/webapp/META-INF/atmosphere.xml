@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<atmosphere-handlers>
+	<!-- Bayeux Cometd Servlet -->
+	<atmosphere-handler context-root="/cometd" class-name="org.atmosphere.handler.ReflectorServletProcessor">
+		<property name="servletClass"
+			value="org.atmosphere.plugin.bayeux.AtmosphereBayeuxServlet" />
+	</atmosphere-handler>
+</atmosphere-handlers>
