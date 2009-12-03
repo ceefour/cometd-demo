@@ -4,18 +4,19 @@ dojo.addOnLoad(function() {
 	var _connected = false;
 	
 	function _connectionSucceeded() {
-		dojo.byId('body').innerHTML = 'Connection OK';
+		console.info('Connection OK');
 	}
 	
 	function _connectionBroken() {
-		dojo.byId('body').innerHTML = 'Connection broken';
+		console.error('Connection broken');
 	}
 	
 	function _metaConnect(message) {
+		console.info("Got meta/connect message", message);
 		var wasConnected = _connected;
 		_connected = message.successful === true;
 		if (!wasConnected && _connected) {
-			__connectionSucceeded();
+			_connectionSucceeded();
 		} else if (wasConnected && !_connected) {
 			_connectionBroken();
 		}
@@ -28,9 +29,14 @@ dojo.addOnLoad(function() {
 		cometd.disconnect();
 	});
 	
+	console.info('Trying to initialize Comet...');
 	var cometUrl = location.protocol + '//' + location.host + config.contextPath + '/cometd';
 	cometd.init(cometUrl);
 	cometd.subscribe('/meta/connect', _metaConnect);
+	cometd.subscribe('/messages', function(message) {
+		console.info("Got: ", message);
+	});
+	console.info('Should be subscribed now?');
 // new cometd.js API	
 //	cometd.configure({'url': cometUrl, 'logLevel': 'debug'});
 //	cometd.addListener('/meta/connect', _metaConnect); // subscribe to meta channel to listen for meta events

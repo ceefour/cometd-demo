@@ -1,16 +1,10 @@
-/*
-	Copyright (c) 2004-2009, The Dojo Foundation All Rights Reserved.
-	Available via Academic Free License >= 2.1 OR the modified BSD license.
-	see: http://dojotoolkit.org/license for details
-*/
+/**
+ * Dual licensed under the Apache License 2.0 and the MIT license.
+ * $Revision$ $Date: 2009-05-10 13:06:45 +1000 (Sun, 10 May 2009) $
+ */
 
-
-if(!dojo._hasResource["dojox.cometd.timestamp"]){
-dojo._hasResource["dojox.cometd.timestamp"]=true;
 dojo.provide("dojox.cometd.timestamp");
-dojo.require("dojox.cometd._base");
-dojox.cometd._extendOutList.push(function(_1){
-_1.timestamp=new Date().toUTCString();
-return _1;
-});
-}
+dojo.require("dojox.cometd");
+dojo.require("org.cometd.TimeStampExtension");
+
+dojox.cometd.registerExtension('timestamp', new org.cometd.TimeStampExtension());

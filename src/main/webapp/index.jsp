@@ -6,7 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Cometd Demo</title>
 <script type="text/javascript"
-	src="${pageContext.request.contextPath}/js/dojo/dojo.js"></script>
+	src="${pageContext.request.contextPath}/js/dojo/dojo.js"
+	djConfig="parseOnLoad: true, isDebug: true"></script>
 <script type="text/javascript"
 	src="cometd-demo.js"></script>
 <script type="text/javascript">
@@ -17,6 +18,7 @@
 </head>
 <body>
 <p>Hello this is Dojo</p>
-<p>This page's contents should change to: connected</p>
+<p>Log below (Firebug Lite) should say connected message.</p>
+<p><input type="text" id="messageBox" value="Hello Atmosphere!" /> <button onclick="dojox.cometd.publish('/messages', dojo.byId('messageBox').value);">push</button></p>
 </body>
 </html>
