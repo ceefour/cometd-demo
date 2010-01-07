@@ -27,11 +27,13 @@
 			<version>3.8.2</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- 
 		<dependency>
 			<groupId>org.atmosphere</groupId>
 			<artifactId>atmosphere-bayeux</artifactId>
 			<version>${atmosphere.version}</version>
 		</dependency>
+		-->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
@@ -44,13 +46,11 @@
 			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- 
 		<dependency>
 			<groupId>org.cometd.java</groupId>
 			<artifactId>cometd-java-server</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.1</version>
 		</dependency>
-		-->
 	</dependencies>
 	<properties>
 		<atmosphere.version>0.4.1</atmosphere.version>
